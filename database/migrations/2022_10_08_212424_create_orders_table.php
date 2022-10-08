@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('order_number');
+            $table->dateTime('shipped_at')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
