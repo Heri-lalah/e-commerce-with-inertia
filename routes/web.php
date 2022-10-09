@@ -26,7 +26,7 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
         'products' => $products
     ]);
-});
+})->name('welcome');
 
 Route::get('products', [ProductController::class, 'index'])->name('products.index');
 

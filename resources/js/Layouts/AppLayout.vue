@@ -50,12 +50,17 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink v-if="$page.props.user" :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </NavLink>
 
+                                <NavLink v-if="$page.props.user" :href="route('welcome')" :active="route().current('welcome')">
+                                    Accueil
+                                </NavLink>            
+                            
                                 <NavLink v-if="$page.props.user" :href="route('products.index')" :active="route().current('products.index')">
                                     Produits
+                                </NavLink>
+
+                                <NavLink v-if="$page.props.user" :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Dashboard
                                 </NavLink>
                             </div>
                         </div>
@@ -215,6 +220,15 @@ const logout = () => {
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
+
+                        <ResponsiveNavLink :href="route('welcome')" :active="route().current('welcome')">
+                            Accueil
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink :href="route('products.index')" :active="route().current('products.index')">
+                            Produits
+                        </ResponsiveNavLink>
+
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </ResponsiveNavLink>
