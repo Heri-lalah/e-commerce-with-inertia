@@ -15,9 +15,9 @@
                 <!-- Remove py-8 -->
                 <div class="mx-auto container py-8">
                     <div class="grid grid-cols-4 grid-gap-4">
-                        <div v-for="product in props.products" tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
+                        <div v-for="product in props.products" :key="product.id" tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
                             <div>
-                                <img alt="person capturing an image" src="{{ product.image }}" tabindex="0" class="focus:outline-none w-full h-44" />
+                                <img alt="person capturing an image" :src="product.image" tabindex="0" class="focus:outline-none w-full h-44" />
                             </div>
                             <div class="bg-white">
                                 <div class="flex items-center justify-between px-4 pt-4">

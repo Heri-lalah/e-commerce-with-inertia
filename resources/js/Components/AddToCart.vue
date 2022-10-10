@@ -9,11 +9,15 @@
             </button>
         </div>
     </div>
-    </template>
+</template>
     
-    <script setup>
-    const addToCart = () => {
-        console.log('added');
-    }
-    </script>
+<script setup>
+import { Inertia } from '@inertiajs/inertia';
+
+const addToCart = async() => {
+    await axios.get('/sanctum/csrf-cookie');
+    await axios.get('/api/user')
+    .catch(err => console.log(err))
+}
+</script>
     
