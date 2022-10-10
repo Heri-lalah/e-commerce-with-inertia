@@ -10,14 +10,16 @@
         </div>
     </div>
 </template>
-    
+
 <script setup>
-import { Inertia } from '@inertiajs/inertia';
+const props= defineProps({
+    user : '',
+})
 
 const addToCart = async() => {
+    console.log(props)
     await axios.get('/sanctum/csrf-cookie');
     await axios.get('/api/user')
     .catch(err => console.log(err))
 }
 </script>
-    
