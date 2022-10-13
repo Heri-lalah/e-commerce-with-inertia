@@ -4,7 +4,7 @@
         products : {
             type: Object,
             required : true
-        }
+        },
     })
 </script>
 
@@ -36,7 +36,7 @@
                                         <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">{{ product.name }}</h2>
                                     </div>
                                     <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">{{ product.description }}</p>
-                                    <AddToCart/>
+                                    <AddToCart :product-id ="product.id"/>
                                 </div>
                             </div>
                         </div>

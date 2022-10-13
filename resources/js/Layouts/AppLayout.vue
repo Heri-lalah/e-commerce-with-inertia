@@ -7,8 +7,8 @@ import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
-import Navbar from '@/Layouts/partials/Navbar.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import NavbarCart from '@/Components/NavbarCart.vue';
 
 defineProps({
     title: String,
@@ -66,6 +66,11 @@ const logout = () => {
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
+                            
+                            <NavLink v-if="$page.props.user" :href="route('dashboard')" :active="route().current('dashboard')">
+                                  <NavbarCart/>
+                            </NavLink>
+                            
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
                                 <Dropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="60">
