@@ -18,9 +18,9 @@ class Product extends Model
         ->withPivot('total_price', 'total_quantity');
     }
 
-    public function price():Attribute {
-        return Attribute::make(
-            get : fn($value) => str_replace('.', ',', $value/100) . " €"
-        );
-    }
+    // public function price():Attribute {
+    //     return Attribute::make(
+    //         get : fn($value) => str_replace('.', ',', $value/100) . " €"
+    //     );
+    // }
 }
