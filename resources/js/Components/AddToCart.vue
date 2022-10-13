@@ -12,18 +12,17 @@
 </template>
 
 <script setup>
-import axios from 'axios';
+import useProduct from '@/Composables/Products';
 
-const productId=defineProps(['productId']);
+const productId = defineProps(['productId']);
+
+const { add } = useProduct();
 
 const addToCart = async() => {
     await axios.get('/sanctum/csrf-cookie');
     await axios.get('/api/user')
     .then(async(res)=> {
-        let response = await axios.post('/api/products',{
-            productId :  productId
-        })
-        console.log(response);
+        await add(productId);
     })
 
     .catch(err => console.log(err))
