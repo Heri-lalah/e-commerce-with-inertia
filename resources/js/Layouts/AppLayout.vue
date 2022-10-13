@@ -237,6 +237,10 @@ const logout = () => {
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </ResponsiveNavLink>
+
+                        <ResponsiveNavLink v-if="$page.props.user" :href="route('dashboard')" :active="route().current('dashboard')">
+                            <NavbarCart/>
+                        </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
