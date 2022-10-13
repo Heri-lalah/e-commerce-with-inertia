@@ -2,7 +2,9 @@
     import useProduct from '@/Composables/Products';
     import { onMounted, ref } from 'vue';
     const { getCount } = useProduct();
-    
+    import emitter from 'tiny-emitter/instance'
+    emitter.on('cartCountUpdated', (count) => cartCount.value = count)
+
     const cartCount=ref(0)
     onMounted(async() => {
         cartCount.value = await getCount();

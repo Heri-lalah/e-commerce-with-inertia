@@ -13,6 +13,7 @@
 
 <script setup>
 import useProduct from '@/Composables/Products';
+import emitter from 'tiny-emitter/instance'
 
 const productId = defineProps(['productId']);
 
@@ -22,7 +23,8 @@ const addToCart = async() => {
     await axios.get('/sanctum/csrf-cookie');
     await axios.get('/api/user')
     .then(async(res)=> {
-        await add(productId);
+        let cartCount = await add(productId);
+        emitter.emit('cartCountUpdated', cartCount);
     })
 
     .catch(err => console.log(err))
