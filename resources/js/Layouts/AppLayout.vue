@@ -53,8 +53,8 @@ const logout = () => {
 
                                 <NavLink v-if="$page.props.user" :href="route('welcome')" :active="route().current('welcome')">
                                     Accueil
-                                </NavLink>            
-                            
+                                </NavLink>
+
                                 <NavLink v-if="$page.props.user" :href="route('products.index')" :active="route().current('products.index')">
                                     Produits
                                 </NavLink>
@@ -66,11 +66,11 @@ const logout = () => {
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            
-                            <NavLink v-if="$page.props.user" :href="route('dashboard')" :active="route().current('dashboard')">
+
+                            <NavLink v-if="$page.props.user" :href="route('shoppingcart.index')" :active="route().current('shoppingcart.index')">
                                   <NavbarCart/>
                             </NavLink>
-                            
+
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
                                 <Dropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="60">
@@ -238,7 +238,7 @@ const logout = () => {
                             Dashboard
                         </ResponsiveNavLink>
 
-                        <ResponsiveNavLink v-if="$page.props.user" :href="route('dashboard')" :active="route().current('dashboard')">
+                        <ResponsiveNavLink v-if="$page.props.user" :href="route('shoppingcart.index')" :active="route().current('shoppingcart.index')">
                             <NavbarCart/>
                         </ResponsiveNavLink>
                     </div>

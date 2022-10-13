@@ -5,6 +5,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShoppingCartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('products', [ProductController::class, 'index'])->name('products.index');
+
+Route::get('shoppingCart', [ShoppingCartController::class, 'index'])->middleware('auth')->name('shoppingcart.index');
 
 Route::middleware([
     'auth:sanctum',
