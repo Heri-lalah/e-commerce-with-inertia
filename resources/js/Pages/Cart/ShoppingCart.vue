@@ -15,9 +15,13 @@ const {
         increaseQuantity,
         decreaseQuantity,
         destroyProduct,
-        getCount
+        getCount,
+        getOrderTotal,
     } = useProduct();
 const cartList = ref(0);
+const cartTotal =ref(0);
+const tva = ref(0);
+const cartTotalTtc = ref(0)
 
 const props = defineProps({
     filter : Object,
@@ -29,6 +33,10 @@ emitter.on('quantityUpdated', (count)=> count = 1);
 
 onMounted(async() => {
     cartList.value = await getCartContent();
+    let response = await getOrderTotal()
+    cartTotal.value = response.cartTotal;
+    tva.value = response.tva;
+    cartTotalTtc.value = response.cartTotalTtc;
 });
 
 
@@ -36,17 +44,29 @@ const decrease = async(id) => {
     await decreaseQuantity(id);
     emitter.emit('cartCountUpdated', await getCount());
     cartList.value = await getCartContent();
+    let response = await getOrderTotal()
+    cartTotal.value = response.cartTotal;
+    tva.value = response.tva;
+    cartTotalTtc.value = response.cartTotalTtc;
 }
 
 const increase = async(id) => {
     await increaseQuantity(id)
     emitter.emit('cartCountUpdated', await getCount());
     cartList.value = await getCartContent();
+    let response = await getOrderTotal()
+    cartTotal.value = response.cartTotal;
+    tva.value = response.tva;
+    cartTotalTtc.value = response.cartTotalTtc;
 }
 
 const destroy = async(id) => {
     await destroyProduct(id)
     cartList.value = await getCartContent();
+    let response = await getOrderTotal()
+    cartTotal.value = response.cartTotal;
+    tva.value = response.tva;
+    cartTotalTtc.value = response.cartTotalTtc;
 }
 
 </script>
@@ -131,7 +151,7 @@ const destroy = async(id) => {
                                                 Total
                                             </div>
                                             <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                                                148,827.53€
+                                                {{formated_price(cartTotal)}}
                                             </div>
                                         </div>
                                         <div class="flex justify-between pt-4 border-b">
@@ -139,7 +159,7 @@ const destroy = async(id) => {
                                                 Tax
                                             </div>
                                             <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                                                2,976.55€
+                                                {{formated_price(tva)}}
                                             </div>
                                         </div>
                                         <div class="flex justify-between pt-4 border-b">
@@ -147,7 +167,7 @@ const destroy = async(id) => {
                                                 Total
                                             </div>
                                             <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                                                17,859.3€
+                                                {{formated_price(cartTotalTtc)}}
                                             </div>
                                         </div>
                                         <a href="#">

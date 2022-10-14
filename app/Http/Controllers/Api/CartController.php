@@ -16,9 +16,16 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cartContent = (new CartRepository())->content();
 
-        return response()->json(['cartContent' => $cartContent]);
+        $cartContent = (new CartRepository())->content();
+        $cartTotal = (new CartRepository())->total();
+        $tva = ($cartTotal*20)/100;
+        return response()->json([
+            'cartContent' => $cartContent,
+            'cartTotal' => $cartTotal,
+            'tva' => $tva,
+            'cartTotalTtc' => $cartTotal + $tva
+        ]);
 
     }
 

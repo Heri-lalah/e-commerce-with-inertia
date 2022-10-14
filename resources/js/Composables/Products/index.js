@@ -21,8 +21,13 @@ export default function useProduct(){
         return response.data.cartContent;
     }
 
+    const getOrderTotal = async() => {
+        let response = await axios.get('/api/products');
+        return response.data;
+    }
+
     const formated_price = (price) => {
-        return price / 100 + " €";
+        return (price / 100).toFixed(2)  + " €";
     }
 
     const increaseQuantity = async(id) => {
@@ -43,6 +48,7 @@ export default function useProduct(){
         formated_price,
         increaseQuantity,
         decreaseQuantity,
-        destroyProduct
+        destroyProduct,
+        getOrderTotal,
     }
 }

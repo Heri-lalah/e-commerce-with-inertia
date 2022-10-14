@@ -36,6 +36,11 @@ class CartRepository {
 
     }
 
+    public function total()
+    {
+        return \Cart::session(Auth::user()->id)->getSubTotal();
+    }
+
     public function count()
     {
         return $this->content()->sum('quantity');
