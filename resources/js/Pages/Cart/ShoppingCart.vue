@@ -4,12 +4,20 @@ import Header from '@/Layouts/partials/Header.vue';
 import { onMounted, ref} from 'vue';
 import useProduct from '@/Composables/Products';
 
-const { getCartContent } = useProduct();
+const { getCartContent, formated_price } = useProduct();
 const cartList = ref(0);
+
+const props = defineProps({
+    filter : Object,
+    dafault : () => ({})
+});
+
+
 onMounted(async() => {
     cartList.value = await getCartContent();
     console.log(cartList.value);
 })
+
 
 </script>
 <template>
@@ -67,12 +75,12 @@ onMounted(async() => {
                                         </td>
                                         <td class="hidden text-right md:table-cell">
                                             <span class="text-sm lg:text-base font-medium">
-                                                {{ product.price }}
+                                                {{ formated_price(product.price) }}
                                             </span>
                                         </td>
                                         <td class="text-right">
                                             <span class="text-sm lg:text-base font-medium">
-                                                20.00€
+                                                {{ formated_price(2000) }}
                                             </span>
                                         </td>
                                     </tr>

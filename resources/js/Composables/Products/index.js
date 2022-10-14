@@ -18,9 +18,14 @@ export default function useProduct(){
         return response.data.cartContent;
     }
 
+    const formated_price = (price) => {
+        return price / 100 + " €";
+    }
+
     return {
         add,
         getCount,
-        getCartContent
+        getCartContent,
+        formated_price
     }
 }
