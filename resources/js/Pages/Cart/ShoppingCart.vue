@@ -9,6 +9,7 @@ import emitter from 'tiny-emitter/instance'
 
 
 const {
+        products,
         getCartContent,
         formated_price,
         increaseQuantity,
@@ -34,19 +35,18 @@ onMounted(async() => {
 const decrease = async(id) => {
     await decreaseQuantity(id);
     emitter.emit('cartCountUpdated', await getCount());
-    await getCartContent();
+    //await getCartContent();
 }
 
 const increase = async(id) => {
     await increaseQuantity(id)
     emitter.emit('cartCountUpdated', await getCount());
-    console.log(cartList)
-    await getCartContent();
+    //await getCartContent();
 }
 
 const destroy = async(id) => {
     await destroyProduct(id)
-    await getCartContent()
+    //await getCartContent()
 }
 
 </script>
@@ -87,7 +87,7 @@ const destroy = async(id) => {
                                         </td>
                                         <td>
                                             <a href="#">
-                                                <p class="mb-2 md:ml-4">{{ product.name }}</p>
+                                                <p class="mb-2 md:ml-4" :text="product.name"></p>
                                                 <form action="" method="POST" class="text-center">
                                                     <button type="submit" class="text-gray-700 md:ml-4 text-red-500">
                                                         <small><i class="fa fa-trash text-xl px-2"></i>supprimer</small>
@@ -98,9 +98,9 @@ const destroy = async(id) => {
                                         <td class="justify-center md:justify-end md:flex mt-6">
                                             <div class="w-40 h-10">
                                                 <div class="relative flex flex-row w-full h-8">
-                                                    <button v-on:click.prevent="decrease(product.id)"><i class="fa fa-minus text-xs rounded-full mx-2 text-white p-1 bg-red-500"></i></button>
+                                                    <button @click.prevent="decrease(product.id)"><i class="fa fa-minus text-xs rounded-full mx-2 text-white p-1 bg-red-500"></i></button>
                                                     <input readonly :value="product.quantity" class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                                                    <button v-on:click.prevent="increase(product.id)"><i class="fa fa-plus text-xs rounded-full mx-2 text-white p-1 bg-green-500"></i></button>
+                                                    <button @click.prevent="increase(product.id)"><i class="fa fa-plus text-xs rounded-full mx-2 text-white p-1 bg-green-500"></i></button>
                                                 </div>
                                             </div>
                                         </td>

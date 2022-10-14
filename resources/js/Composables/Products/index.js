@@ -1,6 +1,7 @@
 import axios from "axios";
-
+import { ref } from "vue";
 export default function useProduct(){
+    const products = ref([]);
     const add = async(productId)=>{
         let response = await axios.post('/api/products',{
             productId :  productId

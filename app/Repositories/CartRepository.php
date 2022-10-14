@@ -54,7 +54,7 @@ class CartRepository {
 
         $item = \Cart::session(Auth::user()->id)->get($id);
 
-        if($item===1) {
+        if($item->quantity===1) {
             $this->remove($id);
             return;
         }
