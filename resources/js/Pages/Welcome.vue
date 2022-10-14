@@ -1,7 +1,8 @@
 <script setup>
     import { Head, Link } from '@inertiajs/inertia-vue3';
-    import AppLayout from '@/Layouts/AppLayout.vue'
+    import AppLayout from '@/Layouts/AppLayout.vue';
     import ProductList from '@/Pages/Products/ProductList.vue'
+    import Header from '@/Layouts/partials/Header.vue';
     defineProps({
         canLogin: Boolean,
         canRegister: Boolean,
@@ -14,8 +15,15 @@
 </script>
 
 <template>
-    <Head title="Welcome" />
-    <AppLayout>
+    <AppLayout title="Welcome">
+        <Header>
+            <template #header>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    Bienvenue Chez e-commerce by herilala
+                </h2>
+            </template>
+        </Header>
+
         <div class="relative flex items-top justify-center min-h-screen bg-white-100 dark:bg-white-900 sm:items-center sm:pt-0">
             <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                 <!-- <Link v-if="$page.props.user" :href="route('dashboard')" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</Link> -->

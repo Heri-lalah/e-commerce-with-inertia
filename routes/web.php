@@ -31,7 +31,7 @@ Route::get('/', function () {
 
 Route::get('products', [ProductController::class, 'index'])->name('products.index');
 
-Route::get('shoppingCart', [ShoppingCartController::class, 'index'])->middleware('auth')->name('shoppingcart.index');
+Route::get('shoppingCart/Index', [ShoppingCartController::class, 'index'])->middleware('auth')->name('shoppingcart.index');
 
 Route::middleware([
     'auth:sanctum',

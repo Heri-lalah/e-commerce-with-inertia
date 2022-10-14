@@ -13,8 +13,14 @@ export default function useProduct(){
         return response.data.count;
     }
 
+    const getCartContent= async () => {
+        let response = await axios.get(route('cart.content'));
+        return response.data.cartContent;
+    }
+
     return {
         add,
-        getCount
+        getCount,
+        getCartContent
     }
 }

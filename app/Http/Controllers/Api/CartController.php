@@ -16,7 +16,10 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $cartContent = (new CartRepository())->content();
+
+        return response()->json(['cartContent' => $cartContent]);
+
     }
 
     /**
@@ -30,9 +33,9 @@ class CartController extends Controller
 
         $product = Product::where('id', $request->productId)->first();
 
-        
+
         $count = (new CartRepository())->add($product);
-        
+
         return response()->json(
             [
             'count' => $count
@@ -74,12 +77,12 @@ class CartController extends Controller
     {
         //
     }
-    
+
     public function count() {
 
         $count = (new CartRepository())->count();
-        
+
         return response()->json(['count' => $count]);
-        
+
     }
 }

@@ -22,7 +22,9 @@ Route::middleware('auth:sanctum')->group(function(){
     })->name('user');
 
     Route::get('products/count', [CartController::class, 'count'])->name('products.count');
-    
+
+    Route::get('cart/content', [CartController::class, 'index'])->name('cart.content');
+
     Route::apiResource('products', CartController::class);
 
 });
