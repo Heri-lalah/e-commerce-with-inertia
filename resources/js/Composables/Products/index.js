@@ -39,7 +39,7 @@ export default function useProduct(){
     }
 
     const destroyProduct = async(id) => {
-        await axios.delete('/api/product/increase/' + id);
+        await axios.delete('/api/products/' + id);
     }
     return {
         add,

@@ -3,6 +3,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import Header from '@/Layouts/partials/Header.vue';
 import { onMounted, ref, reactive } from 'vue';
 import useProduct from '@/Composables/Products';
+import DeleteCartConfirmation from '@/Components/DeleteCartConfirmation.vue';
 
 import emitter from 'tiny-emitter/instance'
 
@@ -99,7 +100,7 @@ const destroy = async(id) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="product in cartList" :key="product.id">
+                                    <tr v-for="product in cartList" :key="product.id">c
                                         <td class="hidden pb-4 md:table-cell">
                                             <a href="#">
                                                 <img :src="product.attributes.image" class="w-20 rounded" :alt="(product.name).substring(0,10)">
@@ -108,11 +109,9 @@ const destroy = async(id) => {
                                         <td>
                                             <a href="#">
                                                 <p class="mb-2 md:ml-4" :text="product.name"></p>
-                                                <form action="" method="POST" class="text-center">
-                                                    <button type="submit" class="text-gray-700 md:ml-4 text-red-500">
-                                                        <small><i class="fa fa-trash text-xl px-2"></i>supprimer</small>
-                                                    </button>
-                                                </form>
+                                                <button @click.prevent="destroy(product.id)" class="text-gray-700 md:ml-4 text-red-500">
+                                                    <small><i class="fa fa-trash text-xl px-2"></i>supprimer</small>
+                                                </button>
                                             </a>
                                         </td>
                                         <td class="justify-center md:justify-end md:flex mt-6">
@@ -179,7 +178,7 @@ const destroy = async(id) => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>                       
                     </div>
                 </div>
             </div>
