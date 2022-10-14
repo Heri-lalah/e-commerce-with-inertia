@@ -16,7 +16,7 @@ export default function useProduct(){
     }
 
     const getCartContent= async () => {
-        let response = await axios.get(route('cart.content'));
+        let response = await axios.get('/api/products');
         return response.data.cartContent;
     }
 

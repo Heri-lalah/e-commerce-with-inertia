@@ -13,7 +13,8 @@ const {
         formated_price,
         increaseQuantity,
         decreaseQuantity,
-        destroyProduct
+        destroyProduct,
+        getCount
     } = useProduct();
 const cartList = ref(0);
 
@@ -22,7 +23,8 @@ const props = defineProps({
     dafault : () => ({})
 });
 
-const cartCount=ref(0)
+//const cartCount=ref(0)
+emitter.on('quantityUpdated', (count)=> count = 1);
 
 onMounted(async() => {
     cartList.value = await getCartContent();
@@ -31,12 +33,14 @@ onMounted(async() => {
 
 const decrease = async(id) => {
     await decreaseQuantity(id);
+    emitter.emit('cartCountUpdated', await getCount());
     await getCartContent();
 }
 
 const increase = async(id) => {
     await increaseQuantity(id)
-    emitter.emit('cartCountUpdated', cartList);
+    emitter.emit('cartCountUpdated', await getCount());
+    console.log(cartList)
     await getCartContent();
 }
 
@@ -51,7 +55,7 @@ const destroy = async(id) => {
     <Header>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Votre panier
+                Récapitulatif de votre panier
             </h2>
         </template>
     </Header>
