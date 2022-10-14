@@ -27,6 +27,8 @@ class CartRepository {
         //
     }
 
+
+
     public function content()
     {
 
@@ -37,5 +39,33 @@ class CartRepository {
     public function count()
     {
         return $this->content()->sum('quantity');
+    }
+
+    public function increase($id)
+    {
+
+        \Cart::session(Auth::user()->id)->update($id, [
+            'quantity' => +1
+        ]);
+    }
+
+    public function decrease($id)
+    {
+
+        $item = \Cart::session(Auth::user()->id)->get($id);
+
+        if($item===1) {
+            $this->remove($id);
+            return;
+        }
+
+        \Cart::session(Auth::user()->id)->update($id, [
+            'quantity' => -1
+        ]);
+    }
+
+    public function remove($id)
+    {
+        \Cart::session(Auth::user()->id)->remove($id);
     }
 }

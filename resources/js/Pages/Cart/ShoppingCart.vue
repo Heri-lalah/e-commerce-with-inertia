@@ -1,10 +1,20 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Header from '@/Layouts/partials/Header.vue';
-import { onMounted, ref} from 'vue';
+import { onMounted, ref, reactive } from 'vue';
 import useProduct from '@/Composables/Products';
 
-const { getCartContent, formated_price } = useProduct();
+import emitter from 'tiny-emitter/instance'
+
+
+
+const {
+        getCartContent,
+        formated_price,
+        increaseQuantity,
+        decreaseQuantity,
+        destroyProduct
+    } = useProduct();
 const cartList = ref(0);
 
 const props = defineProps({
@@ -12,12 +22,28 @@ const props = defineProps({
     dafault : () => ({})
 });
 
+const cartCount=ref(0)
 
 onMounted(async() => {
     cartList.value = await getCartContent();
-    console.log(cartList.value);
-})
+});
 
+
+const decrease = async(id) => {
+    await decreaseQuantity(id);
+    await getCartContent();
+}
+
+const increase = async(id) => {
+    await increaseQuantity(id)
+    emitter.emit('cartCountUpdated', cartList);
+    await getCartContent();
+}
+
+const destroy = async(id) => {
+    await destroyProduct(id)
+    await getCartContent()
+}
 
 </script>
 <template>
@@ -52,7 +78,7 @@ onMounted(async() => {
                                     <tr v-for="product in cartList" :key="product.id">
                                         <td class="hidden pb-4 md:table-cell">
                                             <a href="#">
-                                                <img :src="product.attributes.image" class="w-20 rounded" alt="Thumbnail">
+                                                <img :src="product.attributes.image" class="w-20 rounded" :alt="(product.name).substring(0,10)">
                                             </a>
                                         </td>
                                         <td>
@@ -66,10 +92,11 @@ onMounted(async() => {
                                             </a>
                                         </td>
                                         <td class="justify-center md:justify-end md:flex mt-6">
-                                            <div class="w-20 h-10">
+                                            <div class="w-40 h-10">
                                                 <div class="relative flex flex-row w-full h-8">
-                                                    <input type="number" :value="product.quantity"
-                                                    class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
+                                                    <button v-on:click.prevent="decrease(product.id)"><i class="fa fa-minus text-xs rounded-full mx-2 text-white p-1 bg-red-500"></i></button>
+                                                    <input readonly :value="product.quantity" class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
+                                                    <button v-on:click.prevent="increase(product.id)"><i class="fa fa-plus text-xs rounded-full mx-2 text-white p-1 bg-green-500"></i></button>
                                                 </div>
                                             </div>
                                         </td>
@@ -80,7 +107,7 @@ onMounted(async() => {
                                         </td>
                                         <td class="text-right">
                                             <span class="text-sm lg:text-base font-medium">
-                                                {{ formated_price(2000) }}
+                                                {{ formated_price(product.price * product.quantity) }}
                                             </span>
                                         </td>
                                     </tr>

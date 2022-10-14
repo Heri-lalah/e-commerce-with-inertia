@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export default function useProduct(){
     const add = async(productId)=>{
         let response = await axios.post('/api/products',{
@@ -22,10 +24,24 @@ export default function useProduct(){
         return price / 100 + " €";
     }
 
+    const increaseQuantity = async(id) => {
+        await axios.get('/api/product/increase/' + id);
+    }
+
+    const decreaseQuantity = async(id) => {
+        await axios.get('/api/product/decrease/' + id);
+    }
+
+    const destroyProduct = async(id) => {
+        await axios.delete('/api/product/increase/' + id);
+    }
     return {
         add,
         getCount,
         getCartContent,
-        formated_price
+        formated_price,
+        increaseQuantity,
+        decreaseQuantity,
+        destroyProduct
     }
 }
