@@ -35,18 +35,18 @@ onMounted(async() => {
 const decrease = async(id) => {
     await decreaseQuantity(id);
     emitter.emit('cartCountUpdated', await getCount());
-    //await getCartContent();
+    cartList.value = await getCartContent();
 }
 
 const increase = async(id) => {
     await increaseQuantity(id)
     emitter.emit('cartCountUpdated', await getCount());
-    //await getCartContent();
+    cartList.value = await getCartContent();
 }
 
 const destroy = async(id) => {
     await destroyProduct(id)
-    //await getCartContent()
+    cartList.value = await getCartContent();
 }
 
 </script>
