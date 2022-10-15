@@ -90,36 +90,39 @@ const destroy = async(id) => {
                                 <thead>
                                     <tr class="h-12 uppercase">
                                         <th class="hidden md:table-cell"></th>
-                                        <th class="text-left">Product</th>
-                                        <th class="lg:text-right text-left pl-5 lg:pl-0">
-                                            <span class="lg:hidden" title="Quantity">Qtd</span>
-                                            <span class="hidden lg:inline">Quantity</span>
+                                        <th class="text-left">Produit</th>
+                                        <th class="text-center">
+                                            <span class="lg:hidden" title="Quantity">Qté</span>
+                                            <span class="hidden lg:inline">Quantité</span>
                                         </th>
-                                        <th class="hidden text-right md:table-cell">Unit price</th>
-                                        <th class="text-right">Total price</th>
+                                        <th class="hidden text-right md:table-cell">Prix U.</th>
+                                        <th class="text-center md:text-right">
+                                            <span class="lg:hidden" title="prixHT">Prix HT</span>
+                                            <span class="hidden lg:inline">Prix total H.T</span>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="product in cartList" :key="product.id">c
+                                    <tr v-for="product in cartList" :key="product.id">
                                         <td class="hidden pb-4 md:table-cell">
                                             <a href="#">
                                                 <img :src="product.attributes.image" class="w-20 rounded" :alt="(product.name).substring(0,10)">
                                             </a>
                                         </td>
-                                        <td>
+                                        <td class="w-60">
                                             <a href="#">
-                                                <p class="mb-2 md:ml-4" :text="product.name"></p>
+                                                <p class="mb-2 md:ml-4" >{{product.name}}</p>
                                                 <button @click.prevent="destroy(product.id)" class="text-gray-700 md:ml-4 text-red-500">
                                                     <small><i class="fa fa-trash text-xl px-2"></i>supprimer</small>
                                                 </button>
                                             </a>
                                         </td>
-                                        <td class="justify-center md:justify-end md:flex mt-6">
-                                            <div class="w-40 h-10">
+                                        <td class="justify-center  md:flex mt-6">
+                                            <div class="sm:w-20 md:w-40 lg:w-50 h-10 sm:text-right">
                                                 <div class="relative flex flex-row w-full h-8">
-                                                    <button @click.prevent="decrease(product.id)"><i class="fa fa-minus text-xs rounded-full mx-2 text-white p-1 bg-red-500"></i></button>
+                                                    <button @click.prevent="decrease(product.id)"><i class="fa fa-minus text-xs rounded-full lg:mx-2 text-white p-1 bg-red-500"></i></button>
                                                     <input readonly :value="product.quantity" class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                                                    <button @click.prevent="increase(product.id)"><i class="fa fa-plus text-xs rounded-full mx-2 text-white p-1 bg-green-500"></i></button>
+                                                    <button @click.prevent="increase(product.id)"><i class="fa fa-plus text-xs rounded-full lg:mx-2 text-white p-1 bg-green-500"></i></button>
                                                 </div>
                                             </div>
                                         </td>
@@ -178,7 +181,7 @@ const destroy = async(id) => {
                                     </div>
                                 </div>
                             </div>
-                        </div>                       
+                        </div>
                     </div>
                 </div>
             </div>
