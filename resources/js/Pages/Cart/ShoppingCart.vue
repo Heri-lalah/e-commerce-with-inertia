@@ -70,7 +70,6 @@ const destroy = async(id) => {
     tva.value = response.tva;
     cartTotalTtc.value = response.cartTotalTtc;
 }
-
 </script>
 <template>
  <AppLayout title="ShoppingCart">
