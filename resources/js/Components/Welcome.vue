@@ -10,14 +10,11 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
             </div>
 
             <div class="mt-8 text-2xl">
-                Welcome to your Jetstream application!
+                Welcome to my website
             </div>
 
             <div class="mt-6 text-gray-500">
-                Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-                to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-                you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-                ecosystem to be a breath of fresh air. We hope you love it.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex rem nostrum ullam cupiditate laudantium, quis beatae iusto velit nobis voluptates libero iure reiciendis vitae quo. Placeat debitis deserunt unde libero.
             </div>
         </div>
 
@@ -40,12 +37,12 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
                 <div class="ml-12">
                     <div class="mt-2 text-sm text-gray-500">
-                        Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus soluta at, eos nihil illum repellendus quisquam ducimus similique ad repudiandae magni quidem earum. Temporibus voluptatibus sint consequatur ex veniam soluta.
                     </div>
 
                     <a href="https://laravel.com/docs">
                         <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                            <div>Explore the documentation</div>
+                            <div>Lorem ipsum dolor sit amet.</div>
 
                             <div class="ml-1 text-indigo-500">
                                 <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
@@ -73,7 +70,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
                 <div class="ml-12">
                     <div class="mt-2 text-sm text-gray-500">
-                        Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eaque praesentium ipsum quas eius sed deleniti sit a odio totam mollitia soluta quibusdam, fugiat iure quasi aut magni atque. Laudantium.
                     </div>
 
                     <a href="https://laracasts.com">
@@ -106,7 +103,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
                 <div class="ml-12">
                     <div class="mt-2 text-sm text-gray-500">
-                        Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that doesn't get in your way. You'll be amazed how easily you can build and maintain fresh, modern designs with this wonderful framework at your fingertips.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, quibusdam commodi odit dolore eius unde libero dolores tempore quam blanditiis aut molestiae eum vitae quo magni quidem vel nostrum minus!
                     </div>
                 </div>
             </div>
@@ -123,13 +120,13 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
                         class="w-8 h-8 text-gray-400"
                     ><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
                     <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">
-                        Authentication
+                        Lorem, ipsum.
                     </div>
                 </div>
 
                 <div class="ml-12">
                     <div class="mt-2 text-sm text-gray-500">
-                        Authentication and registration views are included with Laravel Jetstream, as well as support for user email verification and resetting forgotten passwords. So, you're free to get started what matters most: building your application.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum repellendus cumque optio at fugit sequi ipsa. Et consequatur, accusantium beatae tempore soluta dolorum error saepe enim doloribus, exercitationem odit totam!
                     </div>
                 </div>
             </div>
