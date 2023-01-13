@@ -62,7 +62,8 @@ const increase = async(id) => {
 }
 
 const destroy = async(id) => {
-    await destroyProduct(id)
+    await destroyProduct(id);
+    emitter.emit('cartCountUpdated', await getCount());
     cartList.value = await getCartContent();
     let response = await getOrderTotal()
     cartTotal.value = response.cartTotal;
